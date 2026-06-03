@@ -16,8 +16,8 @@ Open `valentine.js` and edit `moodMessages` if you want different answers after 
 
 The social buttons are set to:
 
-- `yourTelegramUsername = "ghinayatolla"`
-- `yourInstagramUsername = "ghinayatolla"`
+- `yourTelegramUsername = "xD"`
+- `yourInstagramUsername = "xD"`
 
 Instagram and Telegram profile links do not reliably pre-fill DM text from a static website, so the app copies the answer first.
 
