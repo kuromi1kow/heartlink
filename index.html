@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A date invitation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app-shell">
+        <section class="invite-card" aria-labelledby="invite-title">
+            <div class="media-panel">
+                <img class="main-gif" src="image/pls.gif" alt="A cute animated character asking hopefully">
+                <div class="floating-note note-one">Dinner?</div>
+                <div class="floating-note note-two">Walk?</div>
+                <div class="floating-note note-three">Coffee?</div>
+            </div>
+
+            <div class="content-panel">
+                <p class="eyebrow">A very important question</p>
+                <h1 id="invite-title">Will you go on a date with me?</h1>
+                <p class="intro">
+                    I planned a small, cozy evening: good food, a calm walk, and a playlist that is probably better than my flirting.
+                </p>
+
+                <div class="date-details" aria-label="Date plan">
+                    <div class="detail-item">
+                        <span class="detail-label">Plan</span>
+                        <strong>Dinner + a walk</strong>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Mood</span>
+                        <strong>Soft, fun, no pressure</strong>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Dress code</span>
+                        <strong>Whatever makes you feel pretty</strong>
+                    </div>
+                </div>
+
+                <div class="choice-box" aria-label="Choose a date mood">
+                    <button class="mood-chip is-active" type="button" data-mood="coffee">Coffee first</button>
+                    <button class="mood-chip" type="button" data-mood="dinner">Dinner date</button>
+                    <button class="mood-chip" type="button" data-mood="surprise">Surprise me</button>
+                </div>
+
+                <div class="answer-row">
+                    <button class="primary-btn yes-btn" type="button">Yes, let's go</button>
+                    <button class="secondary-btn no-btn" type="button">No</button>
+                </div>
+                <p class="no-feedback" aria-live="polite"></p>
+
+                <p class="tiny-line">Made just for you, with a nervous smile.</p>
+            </div>
+        </section>
+
+        <section class="result-card" aria-live="polite" role="dialog" aria-modal="true" aria-labelledby="result-title" hidden>
+            <div class="result-panel">
+                <p class="eyebrow">Answer saved</p>
+                <h2 id="result-title">Okay, it's a date.</h2>
+                <p id="result-copy">
+                    I will see your answer automatically. You only need to enjoy the moment.
+                </p>
+                <p class="notify-status" aria-live="polite"></p>
+                <div class="phone-actions" aria-label="Backup ways to send answer">
+                    <button class="primary-btn phone-link" id="telegram-btn" type="button">Open Telegram</button>
+                    <button class="secondary-btn phone-link" id="instagram-btn" type="button">Open Instagram</button>
+                    <button class="secondary-btn phone-link" id="copy-btn" type="button">Copy answer</button>
+                </div>
+                <button class="quiet-btn reset-btn" type="button">Change answer</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="valentine.js"></script>
+</body>
+</html>
