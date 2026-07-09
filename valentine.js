@@ -1,5 +1,7 @@
 const inviteCard = document.querySelector(".invite-card");
 const resultCard = document.querySelector(".result-card");
+const sendingState = document.querySelector(".sending-state");
+const resultContent = document.querySelector(".result-content");
 const resultCopy = document.querySelector("#result-copy");
 const notifyStatus = document.querySelector(".notify-status");
 const yesButton = document.querySelector(".yes-btn");
@@ -69,13 +71,28 @@ backButtons.forEach((button) => {
     button.addEventListener("click", () => showScene(button.dataset.back));
 });
 
-yesButton.addEventListener("click", () => {
+yesButton.addEventListener("click", async () => {
+    if (yesButton.disabled) {
+        return;
+    }
+
     const mood = getSelectedMood();
 
-    resultCopy.textContent = moodMessages[mood.id].result;
+    yesButton.disabled = true;
     resultCard.hidden = false;
     document.body.classList.add("modal-open");
-    void notifyOwner(mood);
+    sendingState.hidden = false;
+    resultContent.hidden = true;
+
+    const [sendStatus] = await Promise.all([
+        notifyOwner(mood),
+        waitFor(700)
+    ]);
+
+    resultCopy.textContent = moodMessages[mood.id].result;
+    notifyStatus.textContent = sendStatus;
+    sendingState.hidden = true;
+    resultContent.hidden = false;
 });
 
 resetButton.addEventListener("click", resetInvite);
@@ -123,21 +140,21 @@ function getAnswerMessage() {
 function resetInvite() {
     resultCard.hidden = true;
     document.body.classList.remove("modal-open");
+    sendingState.hidden = false;
+    resultContent.hidden = true;
     noFeedback.textContent = "";
     notifyStatus.textContent = "";
     maybeClicks = 0;
     maybeButton.textContent = "Maybe another time";
     yesButton.classList.remove("is-warm");
+    yesButton.disabled = false;
     showScene("intro");
 }
 
 async function notifyOwner(mood) {
     if (!notificationWebhook) {
-        notifyStatus.textContent = "";
-        return;
+        return "";
     }
-
-    notifyStatus.textContent = "Sending your answer...";
 
     try {
         await fetch(notificationWebhook, {
@@ -153,8 +170,12 @@ async function notifyOwner(mood) {
             })
         });
 
-        notifyStatus.textContent = "Your answer was sent.";
+        return "Your answer was sent.";
     } catch {
-        notifyStatus.textContent = "I could not send it automatically. Please try again later.";
+        return "I could not send it automatically. Please try again later.";
     }
+}
+
+function waitFor(milliseconds) {
+    return new Promise((resolve) => window.setTimeout(resolve, milliseconds));
 }
