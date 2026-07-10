@@ -49,7 +49,6 @@ const maybeMessages = [
 ];
 
 let maybeClicks = 0;
-let sceneShiftTimer;
 
 moodButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -125,10 +124,6 @@ function showScene(sceneName) {
 
     inviteCard.dataset.step = sceneName;
     noFeedback.textContent = "";
-    inviteCard.classList.remove("scene-shift");
-    window.requestAnimationFrame(() => inviteCard.classList.add("scene-shift"));
-    window.clearTimeout(sceneShiftTimer);
-    sceneShiftTimer = window.setTimeout(() => inviteCard.classList.remove("scene-shift"), 680);
 }
 
 function getAnswerMessage() {

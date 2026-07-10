@@ -161,6 +161,10 @@ button:focus-visible {
     background: rgba(3, 13, 33, 0.58);
 }
 
+.invite-card[data-step="intro"] .media-panel::before {
+    background: rgba(3, 13, 33, 0.44);
+}
+
 .media-panel::after {
     position: absolute;
     z-index: 5;
@@ -259,10 +263,6 @@ button:focus-visible {
     opacity: 0.72;
     transform: rotate(-27deg);
     animation: comet-pass 5.2s ease-in-out infinite;
-}
-
-.invite-card.scene-shift .media-panel::before {
-    animation: sky-flash 680ms ease both;
 }
 
 .content-panel {
@@ -650,17 +650,6 @@ h2 {
     }
 }
 
-@keyframes sky-flash {
-    0%,
-    100% {
-        background: rgba(3, 13, 33, 0.58);
-    }
-
-    46% {
-        background: rgba(90, 155, 211, 0.28);
-    }
-}
-
 @keyframes thread-spin {
     to {
         transform: rotate(360deg);
@@ -705,6 +694,10 @@ h2 {
 
     .media-panel::before {
         background: rgba(3, 13, 33, 0.62);
+    }
+
+    .invite-card[data-step="intro"] .media-panel::before {
+        background: rgba(3, 13, 33, 0.5);
     }
 
     .media-panel::after {
