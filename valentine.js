@@ -10,7 +10,6 @@ const noFeedback = document.querySelector(".no-feedback");
 const resetButton = document.querySelector(".reset-btn");
 const moodButtons = [...document.querySelectorAll(".mood-chip")];
 const scenePanels = [...document.querySelectorAll(".scene-panel")];
-const progressDots = [...document.querySelectorAll(".progress-dot")];
 const nextButtons = [...document.querySelectorAll(".scene-next")];
 const backButtons = [...document.querySelectorAll(".scene-back")];
 const questionCopy = document.querySelector("#question-copy");
@@ -50,6 +49,7 @@ const maybeMessages = [
 ];
 
 let maybeClicks = 0;
+let sceneShiftTimer;
 
 moodButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -123,12 +123,12 @@ function showScene(sceneName) {
         panel.classList.toggle("is-active", isActive);
     });
 
-    progressDots.forEach((dot) => {
-        dot.classList.toggle("is-active", dot.dataset.progress === sceneName);
-    });
-
     inviteCard.dataset.step = sceneName;
     noFeedback.textContent = "";
+    inviteCard.classList.remove("scene-shift");
+    window.requestAnimationFrame(() => inviteCard.classList.add("scene-shift"));
+    window.clearTimeout(sceneShiftTimer);
+    sceneShiftTimer = window.setTimeout(() => inviteCard.classList.remove("scene-shift"), 680);
 }
 
 function getAnswerMessage() {

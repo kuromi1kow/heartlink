@@ -10,30 +10,33 @@
     <main class="app-shell">
         <section class="invite-card" aria-labelledby="invite-title" data-step="intro">
             <aside class="media-panel" aria-hidden="true">
+                <span class="sky-layer sky-twilight"></span>
+                <span class="sky-layer sky-midnight"></span>
+                <span class="star-field">
+                    <span class="star star-one"></span>
+                    <span class="star star-two"></span>
+                    <span class="star star-three"></span>
+                    <span class="star star-four"></span>
+                    <span class="star star-five"></span>
+                    <span class="star star-six"></span>
+                </span>
                 <span class="red-thread"></span>
                 <span class="light-trail"></span>
-                <p class="sky-caption">a quiet evening</p>
             </aside>
 
             <div class="content-panel">
-                <div class="progress" aria-label="Invitation progress">
-                    <span class="progress-dot is-active" data-progress="intro"></span>
-                    <span class="progress-dot" data-progress="choice"></span>
-                    <span class="progress-dot" data-progress="question"></span>
-                </div>
-
                 <section class="scene-panel is-active" data-scene="intro">
                     <p class="eyebrow">For Merey</p>
-                    <p class="handwritten">A small invitation for you</p>
+                    <p class="handwritten">A small invitation</p>
                     <h1 id="invite-title">Merey, would you like to go for coffee sometime?</h1>
                     <p class="intro">I thought it could be nice to meet, talk, and spend a relaxed evening together.</p>
-                    <button class="primary-btn scene-next" type="button" data-next="choice">See the idea</button>
+                    <button class="primary-btn scene-next" type="button" data-next="choice">A small idea</button>
                 </section>
 
                 <section class="scene-panel" data-scene="choice" hidden>
                     <button class="back-btn scene-back" type="button" data-back="intro">Back</button>
                     <p class="eyebrow">A simple choice</p>
-                    <p class="handwritten">What sounds nicest to you?</p>
+                    <p class="handwritten">What feels right?</p>
                     <h2>Pick a first-date idea.</h2>
                     <div class="choice-box" role="group" aria-label="Choose a date">
                         <button class="mood-chip is-active" type="button" data-mood="coffee" data-label="Coffee" aria-pressed="true">
